@@ -7,7 +7,6 @@ endif
 
 if has('gui')
   if has("gui_macvim")
-    set guifont=Inconsolata-dz\ for\ Powerline:h13
 
     " xxxxxx Required for Closer.vim()
     " Found a better way that doesnt require mapping this!
@@ -17,18 +16,21 @@ if has('gui')
     "  New Tab: CMD-t
     "  New Window: CMD-N
     "  Open Tab: CMD-T
+    "  Show Errors: CMD-l
     " After:
     "  New Tab: CMD-n
     "  New Window: CMD-N
     "  Open Tab: No such thing
+    "  Show Errors: unmapped
     macmenu &File.New\ Window key=<nop>
     macmenu &File.New\ Tab key=<nop>
     macmenu &File.New\ Tab key=<D-n>
     macmenu &File.New\ Window key=<D-N>
+    macmenu &Tools.List\ Errors key=<nop>
 
     " Clear this up for something like CMD+t
     macmenu &File.Open\ Tab\.\.\. key=<nop>
-    
+
     macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-c-f>
     macmenu &Tools.Make key=<nop>
 

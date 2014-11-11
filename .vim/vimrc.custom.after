@@ -1,4 +1,2 @@
 " Overwrite this file with whatever you want. This will be executed after
 " loading any of the stock bundles/settings.
-set rnu
-set guifont=Inconsolata-dz\ for\ Powerline:h13

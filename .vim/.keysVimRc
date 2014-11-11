@@ -93,7 +93,22 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Clear search highlight when escape is pressed.
 " Is really horrible on terminals.
-" nnoremap <esc> :noh<return><esc>
+if has("gui_running")
+  nnoremap <esc> :noh<return><esc>
+endif
+" Toggle between most recently viewed tab
+map <D-L> :LastTab<CR>
+imap <D-L> <Esc>:LastTab<CR>
+
+" Quick global shortcuts for toggling the location list or quickfix list
+nmap <script> <silent> <D-l> :call ToggleLocationList()<CR>
+nmap <script> <silent> <D-r> :call ToggleQuickfixList()<CR>
+
+" Clear search highlight when escape is pressed.
+" Is really horrible on terminals.
+if has("gui_running")
+  nnoremap <esc> :noh<return><esc>
+endif
 
 
 " Alphabetize on F5
@@ -118,6 +133,12 @@ if has('gui_win32')
   imap <F13> <Esc>:q<Cr>
   nmap <F14> :qall<Cr>
   imap <F14> <Esc>:qall<Cr>
+  nmap <F17> :tabnew<Cr>
+  imap <F17> <Esc> :tabnew<Cr>
+  vmap <F17> <Esc> :tabnew<Cr>
+  nmap <F16> :w<Cr>
+  imap <F16> <Esc>:w<Cr>l
+  vmap <F16> <Esc>:w<Cr>
 endif
 
 "Emacs keybindings while inserting.
@@ -144,10 +165,10 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction
-nmap <D-F> :call Preserve("normal gg=G")<CR>
-" This one doesn't work - still need to figure it out.
-" vmap <D-F> :call Preserve("visual =")<CR>
+nmap <D-M> :call Preserve("normal gg=G")<CR>
 
+" Rename complete word in file
+nnoremap <expr> <c-s> ':%s/\<'.expand('<cword>').'\>/'.expand('<cword>').'/g<Left><Left>'
 
 
 " auto change directory of file. (really nice, but not always wanted)

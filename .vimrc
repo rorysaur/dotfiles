@@ -40,6 +40,12 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+
+if has('gui_win32')
+  set rtp+=~/.vim
+endif
+
+
 if filereadable(expand("~/.vim/vimrc.custom.before"))
   source ~/.vim/vimrc.custom.before
 endif
@@ -48,23 +54,20 @@ set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
 set nobackup
 
+set rnu
+set wrap
+set linebreak
+set nolist
+
 syntax on
 set virtualedit=block
 set tabstop=2
-set nonumber
 set noswapfile
 
 set mouse=a
 set nospell
 set ic
 set scs
-
-" TODO: Set up mappings to toggle between text mode and code mode.
-" Editing code
-set nowrap
-set wrapmargin=0
-let &textwidth=exists('g:textColumns') && !empty(g:textColumns) ? g:textColumns : 80
-set nolinebreak
 
 set hlsearch
 set formatoptions+=or
@@ -77,7 +80,7 @@ set ignorecase
 set infercase
 let g:omni_syntax_ignorecase=1
 set wildmode=full
-set wildignore+=*/node_modules/**
+" set wildignore+=*/node_modules/**
 " Including this messes up fugitive in git mergetool:
 " set wildignore+=*/.git/*,*/.hg/*,*/.svn/*        " Linux/MacOSX
 set sm!  " show matching brace/paren
@@ -100,11 +103,7 @@ set diffopt=filler,context:9999
 set spelllang=en
 set spellfile=$HOME/vim_spell/en.utf-8.add
 " UndoDir:
-if has('win32') || has ('win64')
-  let s:homeFolder = $VIM     " Close enough:
-else
-  let s:homeFolder = $HOME
-endif
+let s:homeFolder = $HOME
 let s:undoDir = s:homeFolder . '/vimUndo'
 set undofile
 " " Create undo dir if needed - not in your dotVim folder! It should be local to
@@ -138,13 +137,15 @@ au BufNewFile,BufRead *.m set filetype=objcpp
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
- " Let NeoBundle manage NeoBundle
- " Required:
- NeoBundleFetch 'Shougo/neobundle.vim'
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " <temporary until neobundle stops asking to hit enter for more>
-set guifont=Menlo:h10
-set columns=195
+if has("gui_macvim")
+  set guifont=Monaco:h10
+  set columns=195
+endif
 " </temporary until neobundle stops asking to hit enter for more>
 
 set t_Co=256
