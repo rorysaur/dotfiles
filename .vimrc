@@ -50,6 +50,8 @@ if filereadable(expand("~/.vim/vimrc.custom.before"))
   source ~/.vim/vimrc.custom.before
 endif
 
+let g:jsx_ext_required = 0
+
 set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
 set nobackup

@@ -7,7 +7,9 @@ set runtimepath+=~/.vim/bundle/vimbed
 
 
 NeoBundle "jordwalke/VimCleanColors"
-
+NeoBundle "leafgarland/typescript-vim"
+NeoBundle "jason0x43/vim-js-indent"
+NeoBundle "elixir-lang/vim-elixir"
 
 " =========================== Bootstrap for Vim ================================
 NeoBundle "tpope/vim-sensible"
@@ -330,10 +332,7 @@ NeoBundle "git://github.com/altercation/vim-colors-solarized"
 let g:solarized_underline=0
 "default value is 16
 let g:solarized_termcolors=256
-"default value is normal
-let g:solarized_contrast="high"
-"default value is normal
-let g:solarized_visibility="high"
+call togglebg#map("<F5>")
 " ==============================================================================
 
 
