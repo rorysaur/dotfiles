@@ -1,2 +1,3 @@
 .DS_Store
-vim/bundles/**
+vim/bundle/**
+vim/undo/**
