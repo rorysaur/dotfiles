@@ -181,9 +181,6 @@ set incsearch
 " highlight search results
 set hlsearch
 
-" clear search result highlighting
-nnoremap <leader>cl :noh<cr>
-
 " when jumping between search results, always vertically
 " center current result
 nnoremap n nzz
@@ -224,6 +221,9 @@ nnoremap <C-l> <C-w>l
 
 " or use <tab> to cycle through splits
 nnoremap <tab> <C-w>w
+
+" clear search result highlighting
+nnoremap <leader>c :noh<cr>
 
 " shortcuts
 nnoremap <leader>w :w<cr>
