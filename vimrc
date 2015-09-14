@@ -243,6 +243,10 @@ set encoding=utf-8
 " scroll offset: minimum number of lines above/below the cursor
 set scrolloff=5
 
+" open new splits to right and below
+set splitright
+set splitbelow
+
 " when opening a new file, hide the current buffer instead of closing it
 set hidden
 
