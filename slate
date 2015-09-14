@@ -1,0 +1,5 @@
+# keep two snapshots: one with monitor, one for laptop only
+bind 1:cmd;shift activate-snapshot giant-robot
+bind 2:cmd;shift activate-snapshot tiny-kitten
+bind 9:cmd;shift snapshot tiny-kitten save-to-disk
+bind 0:cmd;shift snapshot giant-robot save-to-disk
