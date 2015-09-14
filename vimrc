@@ -35,6 +35,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'bling/vim-airline'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled=1
+let g:airline_theme = 'wombat'
 
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
@@ -59,6 +60,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" === tmuxline: tmux statusline that matches vim-airline theme
+NeoBundle 'edkolev/tmuxline.vim'
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = 'minimal'
 
 " === NeoBundle cleanup ===
 "
@@ -97,10 +102,10 @@ nnoremap <C-n> :call NumberToggle()<cr>
 set tabstop=2
 
 " how many columns to indent/unindent with `<<` and `>>`
-set shiftwidth=4
+set shiftwidth=2
 
 " how many columns to indent when pressing Tab in insert mode
-set softtabstop=4
+set softtabstop=2
 
 " pressing Tab produces space characters
 set expandtab
