@@ -1,34 +1,31 @@
 # how to set up rorysaur's computer
 
-## installation
-
-### terminal emulator: iTerm2
+## terminal emulator: iTerm2
 + make a new Profile for pretty colors & fonts.
 + I use Solarized with Inconsolata-dz for Powerline, 13pt.
 + set to confirm before quitting.
 
-### OS X package manager: homebrew
+## OS X package manager: homebrew
 and the brew formulas (formulae?):
 + ack
 + macvim (install with `--override-system-vim`)
 + tmux
 + reattach-to-user-namespace (for tmux copy/paste)
 
-### bash stuff
+## bash stuff
 + jimeh/git-aware-prompt
 + bash-completion (install manually with `curl`)
 
-### dev stuff
+## dev stuff
 + rvm (for manage teh rubies)
 + node (for javascripts) (I haven't tried nvm but I should)
 + Postgres.app
 
-### window manager: Slate
+## window manager: Slate
 Slate has about a zillion things you can configure, but I use it only for keybindings to take and activate 2 different snapshots, because I cbf to learn and memorize all the other things you can do with it.
 
-### misc
+## misc
 + switch Ctrl with Caps Lock. duh.
-
 
 ## symlinks
 Clone this repo and then set up symlinks from files in your home directory to
