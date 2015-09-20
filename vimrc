@@ -1,8 +1,10 @@
 " === NeoBundle initialize ===
 set nocompatible  " something about being iMproved (required by NeoBundle)
 
-" set the runtime path to include NeoBundle
-set rtp+=~/.vim/bundle/neobundle.vim
+if has('vim_starting')
+  " set the runtime path to include NeoBundle
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+endif
 
 " initialize
 call neobundle#begin(expand('~/.vim/bundle/'))
@@ -64,6 +66,10 @@ colorscheme solarized
 NeoBundle 'edkolev/tmuxline.vim'
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = 'minimal'
+
+" === languages
+NeoBundle 'kchmck/vim-coffee-script'
+
 
 " === NeoBundle cleanup ===
 "
