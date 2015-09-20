@@ -3,7 +3,7 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 
 # prompt with pretty colors and git branch
-export PS1="\t \[$txtred\]\u@\h \[$txtcyn\]\w \[$txtblu\]\$git_branch\$git_dirty\[$txtrst\]> "
+export PS1="\t \[$txtgrn\]\u@\h \[$txtylw\]\w \[$txtblu\]\$git_branch\$git_dirty\[$txtrst\]> "
 
 # do bash completion
 if [ -f ~/.git-completion.bash ]; then
