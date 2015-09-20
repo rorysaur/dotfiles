@@ -54,11 +54,10 @@ NeoBundle 'tpope/vim-fugitive'
 " === YouCompleteMe: autocompletion
 NeoBundle 'Valloric/YouCompleteMe'
 
-" === vim-colors-solarized: pretty colors
-NeoBundle 'altercation/vim-colors-solarized'
+" === Brogrammer: pretty colors
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme brogrammer
 
 " === tmuxline: tmux statusline that matches vim-airline theme
 NeoBundle 'edkolev/tmuxline.vim'
