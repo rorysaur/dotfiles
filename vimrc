@@ -15,12 +15,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " === plugins! ===
 
 " === CtrlP: fuzzy finder
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+
 " ctrl+p opens CtrlP
 let g:ctrlp_map = '<C-p>'
 
 " :CtrlP opens CtrlP
 let g:ctrlp_cmd = 'CtrlP'
+
+" index moar files
+let g:ctrlp_max_files = 25000
+
+" ignore directories
+let g:ctrlp_custom_ignore = 'node_modules'
 
 " === NERDTree: file drawer
 NeoBundle 'scrooloose/nerdtree'
@@ -57,7 +64,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Valloric/YouCompleteMe'
 
 " === Brogrammer: pretty colors
-syntax enable
 set background=dark
 colorscheme brogrammer
 
@@ -75,7 +81,11 @@ NeoBundle 'kchmck/vim-coffee-script'
 " end NeoBundle
 call neobundle#end()
 
-" don't know what this does
+" enable syntax highlighting (must go after plugins)
+syntax enable
+
+" detect filetypes for syntax highlighting;
+" load plugin and indent files for a given filetype
 filetype plugin indent on
 
 " prompts you to install any uninstalled bundles on startup

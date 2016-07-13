@@ -18,3 +18,17 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+### stuff for twerk
+
+# allows brew-installed programs to be executed over system installs
+export PATH="/usr/local/bin:$PATH"
+
+# initialize direnv (for rails/spring)
+eval "$(direnv hook bash)"
+
+# initialize rbenv
+eval "$(rbenv init -)"
+
+# lead-gen tool
+export PATH="$PATH:$HOME/stuff/coverhound/tools/lead-generator/bin"
