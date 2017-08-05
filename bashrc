@@ -19,6 +19,13 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# for tmuxinator
+export EDITOR=vim
+alias mux=tmuxinator
+
+# for nvim
+alias vim=nvim
+
 ### stuff for twerk
 
 # allows brew-installed programs to be executed over system installs
@@ -30,5 +37,11 @@ eval "$(direnv hook bash)"
 # initialize rbenv
 eval "$(rbenv init -)"
 
+# initialize nvm
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
 # lead-gen tool
 export PATH="$PATH:$HOME/stuff/coverhound/tools/lead-generator/bin"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

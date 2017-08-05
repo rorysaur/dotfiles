@@ -2,7 +2,7 @@
 
 ## terminal emulator: iTerm2
 + make a new Profile for pretty colors & fonts.
-+ I use Solarized with Inconsolata-dz for Powerline, 13pt.
++ I use Brogrammer (modified) with Inconsolata-dz for Powerline, 13pt.
 + set to confirm before quitting.
 
 ## OS X package manager: homebrew
@@ -26,8 +26,11 @@ Slate has about a zillion things you can configure, but I use it only for keybin
 
 ## misc
 + switch Ctrl with Caps Lock. duh.
++ Configure Ctrl (formerly Caps Lock) such that only when pressed in
+  combination with another key, it's Ctrl. When pressed alone, it's Esc. Makes
+  a lot of things ridiculously easier, including vim.
 
-## symlinks
+## how to symlinks
 Clone this repo and then set up symlinks from files in your home directory to
 each file/directory in this repo. (Note that I've named these files without the `.` in
 front, because they're easier for me to edit when not hidden.)

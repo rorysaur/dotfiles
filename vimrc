@@ -1,47 +1,38 @@
-" === NeoBundle initialize ===
-set nocompatible  " something about being iMproved (required by NeoBundle)
-
-if has('vim_starting')
-  " set the runtime path to include NeoBundle
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-endif
-
-" initialize
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-" let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
 " === plugins! ===
 
-" === CtrlP: fuzzy finder
-NeoBundle 'ctrlpvim/ctrlp.vim'
-
-" ctrl+p opens CtrlP
-let g:ctrlp_map = '<C-p>'
-
-" :CtrlP opens CtrlP
-let g:ctrlp_cmd = 'CtrlP'
-
-" index moar files
-let g:ctrlp_max_files = 25000
-
-" ignore directories
-let g:ctrlp_custom_ignore = 'node_modules'
+" specify a directory for plugins
+call plug#begin('~/stuff/dotfiles/vim/plugged')
 
 " === NERDTree: file drawer
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
+
 " open nerdtree when vim starts
 autocmd vimenter * NERDTree
 
 " toggle nerdtree
 map <C-f> :NERDTreeToggle<cr>
 
+" === fzf: fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" ctrl+p to open fzf
+map <C-p> :FZF<cr>
+
 " === ack: search keyword in project
-NeoBundle 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
+
+" ack uses ripgrep
+let g:ackprg = 'rg --vimgrep --no-heading'
+
+" autocomplete
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " === vim-airline: pretty statusline
-NeoBundle 'bling/vim-airline'
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#branch#enabled=1
 let g:airline_theme = 'wombat'
@@ -55,41 +46,25 @@ let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⭠'
 
 " === vim-commentary: comment stuff out
-NeoBundle 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " === vim-fugitive: git fun
-NeoBundle 'tpope/vim-fugitive'
-
-" === YouCompleteMe: autocompletion
-NeoBundle 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-fugitive'
 
 " === Brogrammer: pretty colors
 set background=dark
 colorscheme brogrammer
 
 " === tmuxline: tmux statusline that matches vim-airline theme
-NeoBundle 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = 'minimal'
 
 " === languages
-NeoBundle 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 
-
-" === NeoBundle cleanup ===
-"
-" end NeoBundle
-call neobundle#end()
-
-" enable syntax highlighting (must go after plugins)
-syntax enable
-
-" detect filetypes for syntax highlighting;
-" load plugin and indent files for a given filetype
-filetype plugin indent on
-
-" prompts you to install any uninstalled bundles on startup
-NeoBundleCheck
+" Initialize plugin system
+call plug#end()
 
 
 " === line numbers ===
@@ -298,3 +273,6 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" jbuilder syntax highlighting
+au BufNewFile,BufRead *.jbuilder set ft=ruby
