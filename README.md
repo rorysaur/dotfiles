@@ -2,7 +2,8 @@
 
 <img src="https://raw.githubusercontent.com/rorysaur/dotfiles/master/images/tmux.png" width="500" alt="tmux with neovim">
 
-First, set up the [non-dev stuff](https://rorysaur.blog), including downloading
+## first
+First, set up the [non-dev stuff](https://rorysaur.blog/post/188156909219/how-to-set-up-rorys-exact-desktop-environment), including downloading
 iTerm and setting up Karabiner-Elements to remap `caps-lock` to `ctrl/esc` as
 mentioned there.
 
