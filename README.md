@@ -1,5 +1,6 @@
 # how to set up rorysaur's dev environment
 
+<img src="https://raw.githubusercontent.com/rorysaur/dotfiles/master/images/tmux.png" width="500" alt="tmux with neovim">
 
 First, set up the [non-dev stuff](https://rorysaur.blog), including downloading
 iTerm and setting up Karabiner-Elements to remap `caps-lock` to `ctrl/esc` as
