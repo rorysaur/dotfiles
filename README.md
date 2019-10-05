@@ -1,46 +1,85 @@
-# how to set up rorysaur's computer
+# how to set up rorysaur's dev environment
 
-## terminal emulator: iTerm2
-+ make a new Profile for pretty colors & fonts.
-+ I use Brogrammer (modified) with Inconsolata-dz for Powerline, 13pt.
-+ set to confirm before quitting.
 
-## OS X package manager: homebrew
-and the brew formulas (formulae?):
-+ ack
-+ macvim (install with `--override-system-vim`)
-+ tmux
-+ reattach-to-user-namespace (for tmux copy/paste)
+First, set up the [non-dev stuff](https://rorysaur.blog), including downloading
+iTerm and setting up Karabiner-Elements to remap `caps-lock` to `ctrl/esc` as
+mentioned there.
 
-## bash stuff
-+ jimeh/git-aware-prompt
-+ bash-completion (install manually with `curl`)
 
-## dev stuff
-+ rvm (for manage teh rubies)
-+ node (for javascripts) (I haven't tried nvm but I should)
-+ Postgres.app
+## iTerm
++ Make a new Profile for pretty colors & fonts.
++ I use Brogrammer (modified) (included in this repo) with [Inconsolata-dz for Powerline](https://github.com/powerline/fonts/tree/master/InconsolataDz), 13pt.
++ Set to confirm before quitting. (This is now a default. yay!)
 
-## window manager: Slate
-Slate has about a zillion things you can configure, but I use it only for keybindings to take and activate 2 different snapshots, because I cbf to learn and memorize all the other things you can do with it.
 
-## misc
-+ switch Ctrl with Caps Lock. duh.
-+ Configure Ctrl (formerly Caps Lock) such that only when pressed in
-  combination with another key, it's Ctrl. When pressed alone, it's Esc. Makes
-  a lot of things ridiculously easier, including vim.
+## homebrew: macOS package manager
+Install [homebrew](https://brew.sh/) and the brew formulas (formulae?):
++ [neovim](https://neovim.io/): vim but with better plugins and an active community
++ [tmux](https://github.com/tmux/tmux): terminal multiplexer
++ [ack](https://beyondgrep.com/): like grep
++ [python3](https://www.python.org/) (for [deoplete](https://github.com/Shougo/deoplete.nvim))
++ [rbenv](https://github.com/rbenv/rbenv): manage ruby versions
++ [yarn](https://yarnpkg.com/lang/en/): manage node packages
 
-## how to symlinks
-Clone this repo and then set up symlinks from files in your home directory to
-each file/directory in this repo. (Note that I've named these files without the `.` in
-front, because they're easier for me to edit when not hidden.)
 
-Example: `ln -sf /absolute/path/to/dotfiles/vimrc /absolute/path/to/home/.vimrc`
+## git
+Try to use `git`. Get a prompt asking to install whatever dev command line tool stuff.
+Agree.
+
+
+## how to use these dotfiles
+
+When `git` works, clone these dotfiles.
+
+Then set up symlinks from files in your home directory to each file/directory
+in this repo that you wanna use. (Note that I've named these files without the
+`.` in front, because they're easier for me to edit when not hidden.)
+
+Example: `ln -sf /absolute/path/to/dotfiles/bashrc /absolute/path/to/home/.bashrc`
 
 `-s` is for "soft" or "symbolic"  link (as opposed to "hard" link); `-f` is for "force" and overwrites previous symlinks.
 
 Absolute paths worked for me, while relative paths didn't.
 
-## git
-+ set up ssh keys.
-+ configure global user name and email
+REMEMBER! For Neovim, put the vim stuff not in the home directory:
+```
+ln -sf /absolute/path/to/dotfiles/vim /absolute/path/to/home/.config/nvim
+ln -sf /absolute/path/to/dotfiles/vimrc /absolute/path/to/home/.config/nvim/init.vim
+```
+
+
+## vim stuff
+
+Install [vim-plug](https://github.com/junegunn/vim-plug).
+In `vimrc`, edit the plugins directory if you want it to be different.
+Open vim and run `:PlugInstall`.
+
+Now to fix [deoplete](https://github.com/Shougo/deoplete.nvim) which may be throwing errors:
+```
+pip3 install --user pynvim
+```
+
+
+## bash stuff
++ [jimeh/git-aware-prompt](https://github.com/jimeh/git-aware-prompt)
++ [git-completion](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash): Copy this file to `~/.git-completion.bash`
+
+Reload bash, check that the prompt is pretty and that git commands have tab
+completion.
+
+
+## GitHub
++ Set up ssh keys
++ Configure global user name and email
+
+
+## dev stuff
++ [rbenv](https://github.com/rbenv/rbenv): Initialize it and install the latest
+  ruby.
++ [node](https://nodejs.org/en/)
++ [Postgres.app](https://postgresapp.com/)
+
+
+## Slate: window manager
+I actually don't use Slate right now (or any window manager), but I'll keep the
+config file around in case I go back to it later.

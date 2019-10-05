@@ -1,7 +1,7 @@
 " === plugins! ===
 
 " specify a directory for plugins
-call plug#begin('~/stuff/dotfiles/vim/plugged')
+call plug#begin('~/dotfiles/vim/plugged')
 
 " === NERDTree: file drawer
 Plug 'scrooloose/nerdtree'
@@ -261,6 +261,9 @@ set hidden
 
 " highlight line that the cursor is on
 set cursorline
+
+" don't let neovim change the cursor shape
+set guicursor=
 
 " enable fast terminal connection?
 set ttyfast
