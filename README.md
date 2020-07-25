@@ -19,6 +19,7 @@ Install [homebrew](https://brew.sh/) and the brew formulas (formulae?):
 + [neovim](https://neovim.io/): vim but with better plugins and an active community
 + [tmux](https://github.com/tmux/tmux): terminal multiplexer
 + [ack](https://beyondgrep.com/): like grep
++ [ripgrep](https://github.com/BurntSushi/ripgrep): like grep
 + [python3](https://www.python.org/) (for [deoplete](https://github.com/Shougo/deoplete.nvim))
 + [rbenv](https://github.com/rbenv/rbenv): manage ruby versions
 + [yarn](https://yarnpkg.com/lang/en/): manage node packages

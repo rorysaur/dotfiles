@@ -77,6 +77,16 @@ let g:tmuxline_preset = 'minimal'
 
 " === languages
 Plug 'kchmck/vim-coffee-script'
+Plug 'leafgarland/typescript-vim'
+Plug 'pangloss/vim-javascript'
+
+" === ESLint
+Plug 'w0rp/ale'
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+let g:ale_set_highlights = 0
+highlight ALEErrorSign ctermbg=233 ctermfg=9
+highlight ALEWarningSign ctermbg=233 ctermfg=11
 
 " Initialize plugin system
 call plug#end()
@@ -233,6 +243,7 @@ nnoremap <leader>c :noh<cr>
 " shortcuts
 nnoremap <leader>w :w<cr>
 nnoremap <leader>a :Ack
+nnoremap <leader>l :ALEToggle<cr>
 
 
 " === misc? ===

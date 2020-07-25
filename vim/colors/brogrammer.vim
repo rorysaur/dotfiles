@@ -28,6 +28,7 @@ hi Directory ctermfg=33 ctermbg=NONE cterm=NONE guifg=#6c71c4 guibg=NONE gui=NON
 hi Folded ctermfg=241 ctermbg=233 cterm=NONE guifg=#606060 guibg=#1a1a1a gui=NONE
 
 hi Normal ctermfg=231 ctermbg=233 cterm=NONE guifg=#ecf0f1 guibg=#1a1a1a gui=NONE
+hi SignColumn ctermbg=233 guibg=#1a1a1a gui=NONE
 hi Boolean ctermfg=33 ctermbg=NONE cterm=NONE guifg=#6c71c4 guibg=NONE gui=NONE
 hi Character ctermfg=33 ctermbg=NONE cterm=NONE guifg=#6c71c4 guibg=NONE gui=NONE
 hi Comment ctermfg=241 ctermbg=NONE cterm=NONE guifg=#606060 guibg=NONE gui=italic
