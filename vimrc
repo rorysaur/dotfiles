@@ -40,10 +40,13 @@ Plug 'mileszs/ack.vim'
 " ack uses ripgrep
 let g:ackprg = 'rg --vimgrep --no-heading'
 
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" see end of this file for coc.nvim config
+
 " autocomplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " === vim-airline: pretty statusline
 Plug 'bling/vim-airline'
@@ -59,6 +62,25 @@ endif
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_symbols.branch = '⭠'
+
+" === pretty
+Plug 'Yggdroot/indentLine'
+let g:indentLine_char = '⎸'
+
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+Plug 'junegunn/rainbow_parentheses.vim'
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType javascript,ruby RainbowParentheses
+augroup END
+let g:rainbow#pairs = [['(', ')'], ['[', ']']]
+
+" === type stuff faster
+Plug 'tpope/vim-surround'
+Plug 'rstacruz/vim-closer'
+Plug 'alvan/vim-closetag'
+let g:closetag_filenames = '*.html,*.jsx,*.xml,*.njk'
 
 " === vim-commentary: comment stuff out
 Plug 'tpope/vim-commentary'
@@ -76,17 +98,20 @@ let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = 'minimal'
 
 " === languages
+Plug 'sheerun/vim-polyglot'
 Plug 'kchmck/vim-coffee-script'
 Plug 'leafgarland/typescript-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'lepture/vim-jinja'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " === ESLint
-Plug 'w0rp/ale'
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
-let g:ale_set_highlights = 0
-highlight ALEErrorSign ctermbg=233 ctermfg=9
-highlight ALEWarningSign ctermbg=233 ctermfg=11
+" Plug 'w0rp/ale'
+" let g:ale_sign_error = '✘'
+" let g:ale_sign_warning = '⚠'
+" let g:ale_set_highlights = 0
+" highlight ALEErrorSign ctermbg=233 ctermfg=9
+" highlight ALEWarningSign ctermbg=233 ctermfg=11
 
 " Initialize plugin system
 call plug#end()
@@ -305,3 +330,91 @@ vmap <silent> <expr> p <sid>Repl()
 
 " jbuilder syntax highlighting
 au BufNewFile,BufRead *.jbuilder set ft=ruby
+
+
+" === coc.nvim config ===
+" (mostly copy-pasted from the example config)
+"
+let g:coc_global_extensions = [
+  \ 'coc-css',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-eslint',
+  \ 'coc-prettier'
+  \ ]
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
