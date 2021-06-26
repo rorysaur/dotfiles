@@ -105,6 +105,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'lepture/vim-jinja'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
+" don't let indentLine mess up markdown and jsoN
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 " === ESLint
 " Plug 'w0rp/ale'
 " let g:ale_sign_error = '✘'
@@ -267,7 +272,7 @@ nnoremap <leader>c :noh<cr>
 
 " shortcuts
 nnoremap <leader>w :w<cr>
-nnoremap <leader>a :Ack
+nnoremap <leader>a :Ack! 
 nnoremap <leader>l :ALEToggle<cr>
 
 

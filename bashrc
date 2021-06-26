@@ -1,3 +1,6 @@
+# shut up, apple
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # load git-aware-prompt for git info in bash prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
@@ -22,6 +25,9 @@ alias vim=nvim
 
 # allows brew-installed programs to be executed over system installs
 export PATH="/usr/local/bin:$PATH"
+
+# same as above, but when homebrew is installed to a different directory
+export PATH="$HOME/stuff/homebrew/bin:$PATH"
 
 # initialize rbenv
 eval "$(rbenv init -)"
