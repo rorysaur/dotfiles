@@ -1,7 +1,7 @@
 " === plugins! ===
 
 " specify a directory for plugins
-call plug#begin('~/dotfiles/vim/plugged')
+call plug#begin('~/stuff/dotfiles/vim/plugged')
 
 " === NERDTree: file drawer
 Plug 'scrooloose/nerdtree'
