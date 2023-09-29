@@ -29,12 +29,16 @@ export PATH="/usr/local/bin:$PATH"
 # same as above, but when homebrew is installed to a different directory
 export PATH="$HOME/stuff/homebrew/bin:$PATH"
 
+# latest homebrew uses this?
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # initialize rbenv
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # initialize nvm
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -46,3 +50,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # The original version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:${PATH}"
 export PATH
+
