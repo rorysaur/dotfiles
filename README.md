@@ -70,9 +70,9 @@ Now to fix [deoplete](https://github.com/Shougo/deoplete.nvim) which may be thro
 pip3 install --user pynvim
 ```
 
-## vscode
+## code editor
 
-Install VSCode.
+Install VSCode (or, these days, Cursor).
 
 Turn on Settings Sync and sign in to GitHub.
 
@@ -84,7 +84,15 @@ Fix the hjkl key repeat by running in the terminal:
 
 - `defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false`
 
-Restart VSCode after both of the above changes.
+Or for Cursor, first get the bundle ID:
+
+- `osascript -e ‘id of app “Cursor”’`
+
+Then run the same command:
+
+- `defaults write {the bundle id} ApplePressAndHoldEnabled -bool false`
+
+Restart the app after the above changes.
 
 ## bash stuff
 
