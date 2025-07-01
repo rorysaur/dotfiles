@@ -17,11 +17,16 @@ fi
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin"
 
 # for tmuxinator
-export EDITOR=vim
 alias mux=tmuxinator
 
 # for nvim
 alias vim=nvim
+
+alias pn=pnpm
+alias np=pnpm
+
+export EDITOR=nvim
+export GIT_EDITOR=nvim
 
 # allows brew-installed programs to be executed over system installs
 export PATH="/usr/local/bin:$PATH"
